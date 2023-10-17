@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('page-content')
     <h1>Enquiry form</h1>
+    {{URL::previous()}}
     
     @if (Session::has('success'))
    <div class="alert alert-primary"> {{Session::get('success')}}</div>
@@ -9,6 +10,7 @@
     {{Session::get('error')}}
 @endif
     <form method="post">
+        {{URL::current()}}
         @csrf
         <table class="table table-hover">
             <tr>
@@ -21,7 +23,8 @@
             </tr>
             <tr>
                 <td>
-                    <label>Email</label>
+                    <label>Email{{URL::current()}}</label>
+                   
                 </td>
                 <td>
                     <input type="text" id="email" class="form-control"  name="email"/>
